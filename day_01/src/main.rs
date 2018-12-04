@@ -1,22 +1,21 @@
 use std::fs::File;
-use std::io::BufRead;
-use std::io::BufReader;
+use std::io::prelude::*;
 
 fn main() {
-    println!("ArchSonix Advent of Code 2018");
-    day1();
+    let mut file_handle = File::open("input.txt").expect("Couldn't find input.txt");
+    let mut input = String::new();
+    file_handle.read_to_string(&mut input).expect("Couldn't read input");
+
+    day1(&input)
 }
 
-fn day1() {
-    let file_handle = File::open("data/day1/input.txt").expect("Day 1: could not find file");
-    let file = BufReader::new(&file_handle);
-
-    let mut frequency_increments: Vec<i32> = vec![];
-    for line in file.lines().enumerate() {
-        frequency_increments.push(line.1.unwrap().parse().unwrap());
+fn day1(input: &str) {
+    let mut frequency_increments: Vec<i32> = vec!();
+    for line in input.lines() {
+        frequency_increments.push(line.parse().unwrap());
     }
 
-    let mut frequencies: Vec<i32> = vec![];
+    let mut frequencies: Vec<i32> = vec!();
     let mut first_run_frequency: i32 = 0;
     let mut first_run_complete: bool = false;
     let mut first_repeated_frequency: i32 = 0;
