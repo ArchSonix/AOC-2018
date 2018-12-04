@@ -10,11 +10,7 @@ fn main() {
 }
 
 fn day1(input: &str) {
-    let mut frequency_increments: Vec<i32> = vec!();
-    for line in input.lines() {
-        frequency_increments.push(line.parse().unwrap());
-    }
-
+    let frequency_increments: Vec<i32> = input.lines().map(|line| line.parse().unwrap()).collect();
     let mut frequencies: Vec<i32> = vec!();
     let mut first_run_frequency: i32 = 0;
     let mut first_run_complete: bool = false;
