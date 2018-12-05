@@ -1,13 +1,8 @@
 use std::collections::HashMap;
-use std::fs::File;
-use std::io::prelude::*;
+use std::fs;
 
 fn main() {
-    let mut file_handle = File::open("input.txt").expect("Couldn't find input.txt");
-    let mut input = String::new();
-    file_handle
-        .read_to_string(&mut input)
-        .expect("Couldn't read input");
+    let input = fs::read_to_string("input.txt").expect("Couldn't find input.txt");
 
     part_1(&input);
     part_2(&input)
