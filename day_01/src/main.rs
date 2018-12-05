@@ -4,14 +4,16 @@ use std::io::prelude::*;
 fn main() {
     let mut file_handle = File::open("input.txt").expect("Couldn't find input.txt");
     let mut input = String::new();
-    file_handle.read_to_string(&mut input).expect("Couldn't read input");
+    file_handle
+        .read_to_string(&mut input)
+        .expect("Couldn't read input");
 
     day1(&input)
 }
 
 fn day1(input: &str) {
     let frequency_increments: Vec<i32> = input.lines().map(|line| line.parse().unwrap()).collect();
-    let mut frequencies: Vec<i32> = vec!();
+    let mut frequencies: Vec<i32> = vec![];
     let mut first_run_frequency: i32 = 0;
     let mut first_run_complete: bool = false;
     let mut first_repeated_frequency: i32 = 0;
